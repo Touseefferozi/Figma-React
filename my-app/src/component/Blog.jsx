@@ -74,9 +74,6 @@ function Blog() {
     
 
 
-
-
-
       <Footer />
     </>
   );
