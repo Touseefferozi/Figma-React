@@ -4,7 +4,8 @@ import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import Group23777522x from '../Image/Group23777522x.png'; // Ensure the path is correct
-
+// import {getDatabase} from "../Config/Firebase/database";
+// import {app} from "../Config/Firebase";
 function Blog() {
   return (
     <>

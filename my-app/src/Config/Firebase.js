@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+// import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -13,9 +13,10 @@ const firebaseConfig = {
   storageBucket: "react-blog-61b55.firebasestorage.app",
   messagingSenderId: "51561233203",
   appId: "1:51561233203:web:847fcd711de53969a31c46",
-  measurementId: "G-ZHGMTQ941N"
+  measurementId: "G-ZHGMTQ941N",
+  DatabaseURL:"https://console.firebase.google.com/project/react-blog-61b55/database/react-blog-61b55-default-rtdb/data/~2F"
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+export const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
