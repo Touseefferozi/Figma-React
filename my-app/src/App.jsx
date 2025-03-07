@@ -1,28 +1,23 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import Blog from "./component/Blog";
-
-import Home from "./component/Home";    // Rename to Home
+import Home from "./component/Home";
 import Contact from "./component/Contact";
-
-
+import Signup from "./component/Signup";
+import Login from "./component/Login";
 
 function App() {
   return (
+ 
     <Router>
-      {/* Navbar should be inside Router */}
-      {/* <Navbar /> */}
-
-      {/* Define Routes */}
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Navigate to="/signup" />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />
-
       </Routes>
-
-      {/* Footer should remain outside Routes */}
-      {/* <Footer /> */}
     </Router>
   );
 }

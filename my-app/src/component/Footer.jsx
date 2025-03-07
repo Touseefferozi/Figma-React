@@ -26,6 +26,11 @@ function Footer() {
 
     </div>
 
+    <center>
+      <p>Copyright Ideapeel Inc © 2023. All Right Reserved
+
+</p>
+    </center>
 
 
     </>

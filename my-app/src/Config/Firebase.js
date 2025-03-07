@@ -1,22 +1,24 @@
-// Import the functions you need from the SDKs you need
+// Import necessary Firebase SDK functions
 import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth } from "firebase/auth";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Firebase configuration using environment variables
 const firebaseConfig = {
-  apiKey: "AIzaSyDA9C3DvgFTnfd9bnmFxMAcH5BfclgDZp4",
-  authDomain: "react-blog-61b55.firebaseapp.com",
-  projectId: "react-blog-61b55",
-  storageBucket: "react-blog-61b55.firebasestorage.app",
-  messagingSenderId: "51561233203",
-  appId: "1:51561233203:web:847fcd711de53969a31c46",
-  measurementId: "G-ZHGMTQ941N",
-  DatabaseURL:"https://console.firebase.google.com/project/react-blog-61b55/database/react-blog-61b55-default-rtdb/data/~2F"
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
+  measurementId: import.meta.env.VITE_MEASUREMENTID,
+  databaseURL: import.meta.env.VITE_DATABASEURL, // Ensured correct property name
 };
 
-// Initialize Firebase
+// Initialize Firebase App
 export const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
+
+// Initialize Firebase Authentication
+export const auth = getAuth(app);
+
+// Export the initialized Firebase app
+export default app;

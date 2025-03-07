@@ -1,6 +1,5 @@
 import React from 'react';
-import Navbar from './Navbar';  // Ensure correct import path
-import Footer from './Footer';  // Ensure correct import path
+
 import ImagePlaceholder from "../Image/ImagePlaceholder.png";
 function Card({ username, btntext }) {
   return (
