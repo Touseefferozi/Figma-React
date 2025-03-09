@@ -62,24 +62,29 @@ function Contact() {
 
       {/* form start  */}
       <div className="form-container">
-        <form>
-          <label for="fname">First Name</label>
-          <input type="text" id="fname" name="fname" required />
+        <h1>Get in Touch</h1>
+        <form className="form">
+          <div className="form-group">
+            <label htmlFor="fname">First Name</label>
+            <input type="text" id="fname" name="fname" required />
+          </div>
 
-          <label id="Lname" for="lname">Last Name</label>
-          <input type="text" id="lname" name="lname" required />
+          <div className="form-group">
+            <label htmlFor="lname">Last Name</label>
+            <input type="text" id="lname" name="lname" required />
+          </div>
 
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required />
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
 
-          <label id="Paswords" for="Pasword">Pasword</label>
-          <input id="Pasword" name="Pasword" required></input>
+          <div className="form-group">
+            <label htmlFor="subject">Message</label>
+            <textarea id="subject" name="subject" required></textarea>
+          </div>
 
-          <label for="subject">Message</label>
-          <textarea id="subject" name="subject" required></textarea>     
-
-
-          <input type="submit" id="submit" value="Submit" />
+          <button type="submit">Submit</button>
         </form>
       </div>
 
