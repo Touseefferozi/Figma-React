@@ -1,3 +1,9 @@
+body{
+
+overflow-x:hidden;
+
+}
+
 .main-img {
   width: 100%;
   height: auto;
@@ -26,11 +32,12 @@
 }
 
 .navbar ul {
-  margin-left: 0 !important;
-  margin-top: 0;
-  gap: 13px;
+  margin-left: 118px !important;
+  margin-top: -33px;
+  gap: 14px;
   width: auto;
-  display: flex;
+  display: flex
+;
   justify-content: center;
 }
 
@@ -633,11 +640,12 @@ margin-left: 0;
 }
 
 .navbar ul {
-  margin-left: 0 !important;
-  margin-top: 0;
-  gap: 13px;
+  margin-left: 118px !important;
+  margin-top: -33px;
+  gap: 14px;
   width: auto;
-  display: flex;
+  display: flex
+;
   justify-content: center;
 }
 
@@ -647,11 +655,11 @@ margin-left: 0;
 }
 
 .nav-btn {
-  margin-top: 10px;
+  margin-top: -45px;
   margin-left: 0 !important;
   width: auto;
   text-align: center;
-  margin-right: 10%;
+  margin-right: -80%;
 }
 
 .banner {
@@ -1263,6 +1271,35 @@ margin-left: 0;
   background-color: #8e3f9f;
 }
 
+/* Navbar Responsiveness */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .navbar li {
+    margin-bottom: 5px;
+  }
+
+  .nav-btn {
+    margin-top: 10px;
+    align-self: flex-end;
+  }
+}
+
 .text-sm {
   font-size: 0.875rem;
 }
@@ -1275,4 +1312,30 @@ margin-left: 0;
   text-align: center;
 }
 
-/* Contact Form Styles */
+/*Navbar Form Styles */
+
+.user{
+
+font-size:20px;
+color:black !important;
+
+}
+
+/* create-btn  */
+
+.create-btn{
+
+  display: flex;
+  justify-content: center;
+  background-color: #a659ed;
+  margin-top: 6pc;
+  font-size: 25px;
+  padding: 14px 7px 12px 1px;
+  width: 267px;
+  box-shadow: 0px 5px 10px 0px;
+  color: white;
+  border-radius: 17px;
+  margin-left: 31pc;
+  font-family: math;
+
+}

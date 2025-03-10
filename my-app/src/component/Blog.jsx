@@ -65,6 +65,12 @@ function Blog() {
 
         </div>
 
+      {/* create btn  */}
+
+      <div className="create-btn">
+        <Link to="/create-blog">CREATE A NEW BLOG</Link>
+      </div>
+
 
       {/* close  */}
       <div className="container-fluid">
