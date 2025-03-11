@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logo1 from "../Image/Logo1.png";
+import Login from "./Login";
 // import { Link } from "react-router-dom";
 
 function Navbar() {
@@ -12,6 +13,14 @@ function Navbar() {
       setUser(JSON.parse(storedUser));
     }
   }, []);
+
+
+  const handleLogout = () => {
+    if (window.confirm("Are you sure you want to logout?")) {
+      localStorage.removeItem("user"); // Clear user session
+      navigate("/login"); // Redirect to login page
+    }
+  };
 
   return (
     <>
@@ -91,15 +100,26 @@ function Navbar() {
               </div>
             </div>
 
-            <div className="col-12 col-lg-4">
-              <div className="nav-btn">
-                <Link to="/contact">
-                  <button className="bg-purple-500 hover:bg-purple-600 text-white font-medium py-2 px-4 rounded">
-                    Contact Us
-                  </button>
-                </Link>
-              </div>
-            </div>
+           
+        {/* navbar mein login ka button ban karo do jab click karun toh login page par render ho  bna karo do  */}
+        
+
+                  
+
+
+
+            <div className="col-12 col-lg-2">
+      <div className="nav-btn">
+        <button
+          onClick={handleLogout}
+          className="bg-purple-500 hover:bg-purple-600 text-white font-medium py-2 px-4 rounded"
+        >
+          Logout
+        </button>
+      </div>
+    </div>
+
+
           </div>
         </div>
       </div>

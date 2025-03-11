@@ -1,48 +1,53 @@
 body{
-
-overflow-x:hidden;
-
+  overflow-x: hidden;
 }
 
-.main-img {
-  width: 100%;
-  height: auto;
-  max-height: 450px;
+.create-blog-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
 }
 
-@media (max-width: 768px) {
-  .main-img {
-    max-height: 300px;
-  }
-}
-
-.nav {
-  background-color: whitesmoke;
-  height: auto;
-  padding: 10px 0;
+.blog-form {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
-.logo img {
-  margin-left: 10%;
-  padding-top: 11px;
-  width: 161px;
+.form-group {
+  margin-bottom: 15px;
 }
 
-.navbar ul {
-  margin-left: 118px !important;
-  margin-top: -33px;
-  gap: 14px;
-  width: auto;
-  display: flex
-;
-  justify-content: center;
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
 }
 
-.navbar ul li a {
-  font-size: 15px;
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.submit-button {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
   color: black;
 }
 
@@ -81,8 +86,10 @@ overflow-x:hidden;
 }
 
 .content h2 {
-  font-size: 28px;
+  /* font-size: 28px;
   color: white;
+  margin-left: -45pc;
+  margin-top: 6px; */
 }
 
 .content p {
@@ -1337,5 +1344,182 @@ color:black !important;
   border-radius: 17px;
   margin-left: 31pc;
   font-family: math;
+
+}
+
+/* Blog Form Container */
+.create-blog-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.blog-form .form-group {
+  margin-bottom: 15px;
+}
+
+.blog-form label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.blog-form input,
+.blog-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.blog-form textarea {
+  resize: vertical;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.submit-button:hover {
+  background: #0056b3;
+}
+
+/* Blogs Display */
+.blogs-container {
+  max-width: 800px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.blog-card {
+  background: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.blog-card h3 {
+  margin: 0;
+  color: #333;
+}
+
+.blog-card p {
+  color: #666;
+}
+
+.blog-date {
+  font-size: 12px;
+  color: #888;
+}
+
+
+/* updated  */
+
+.create-blog-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.blog-form .form-group {
+  margin-bottom: 15px;
+}
+
+.blog-form input, .blog-form textarea, .blog-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.image-preview img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.blogs-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.blog-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.blog-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.blog-category {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background: #007bff;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+
+.edit-btn{
+
+  /* BTN BEST CSS  */
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  
+}
+
+.delete-btn{
+
+  /* BTN BEST CSS  */
+  background-color: #dc3545;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-top: 10px;
+  margin-bottom: 10px;
 
 }

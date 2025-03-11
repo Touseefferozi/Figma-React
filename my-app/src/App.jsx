@@ -5,6 +5,7 @@ import Home from "./component/Home";
 import Contact from "./component/Contact";
 import Signup from "./component/Signup";
 import Login from "./component/Login";
+import Createblog from "./component/Createblog";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/createblog" element={<Createblog />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>

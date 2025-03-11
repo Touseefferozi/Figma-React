@@ -8,7 +8,6 @@ import Container from "../Image/Container.png";
 import ImagePlaceholder from "../Image/ImagePlaceholder.png";
 import Card from "./Card";
 
-
 function Home() {
   return (
     <div>
@@ -106,15 +105,19 @@ function Home() {
       {/* close  */}
 
       <div className="card-container">
-  <Card username="8 Rules of Travelling In Sea You Need To Know" btntext="Click Me" />
-  <Card username="How to build strong portfolio and get a Job in UI/UX" btntext="Click Me" />
-  <Card username="8 Rules of Travelling In Sea You Need To Know" btntext="Click Me" />
-  
-  
-
-</div>
-
-
+        <Card
+          username="8 Rules of Travelling In Sea You Need To Know"
+          btntext="Click Me"
+        />
+        <Card
+          username="How to build strong portfolio and get a Job in UI/UX"
+          btntext="Click Me"
+        />
+        <Card
+          username="8 Rules of Travelling In Sea You Need To Know"
+          btntext="Click Me"
+        />
+      </div>
 
       <Footer />
     </div>
