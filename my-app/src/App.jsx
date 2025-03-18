@@ -6,7 +6,6 @@ import Contact from "./component/Contact";
 import Signup from "./component/Signup";
 import Login from "./component/Login";
 import Createblog from "./component/Createblog";
-
 function App() {
   return (
  

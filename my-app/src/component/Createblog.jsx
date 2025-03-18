@@ -1,60 +1,57 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../App.css"; // Ensure high-quality CSS
+import "../App.css";
+import { getFirestore, doc, setDoc, collection } from "firebase/firestore";
+import { app } from "../Config/Firebase"; // Ensure correct path
+
+// Initialize Firestore
+const db = getFirestore(app);
 
 function CreateBlog() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
-  const [category, setCategory] = useState("Technology"); // Default category
-  const navigate = useNavigate(); // Hook for navigation
+  const [category, setCategory] = useState("Technology");
+  const navigate = useNavigate();
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImage(reader.result); // Convert image to Base64 for storage
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!title || !content || !image) {
-      alert("Title, content, and an image are required!");
+    if (!title || !content) {
+      alert("Title and content are required!");
       return;
     }
 
-    // Retrieve existing blogs or initialize an empty array
-    const existingBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
+    const id = `${title}-${Date.now()}`;
 
     // Create new blog object
     const newBlog = {
+      id,
       title,
       content,
-      image,
       category,
       date: new Date().toLocaleDateString(),
     };
 
-    // Update localStorage
-    const updatedBlogs = [...existingBlogs, newBlog];
-    localStorage.setItem("blogs", JSON.stringify(updatedBlogs));
+    try {
+      // Store in Firestore
+      const blogRef = doc(db, "Blogs", id);
+      await setDoc(blogRef, newBlog);
 
-    // Show success message
-    alert("Blog created successfully!");
+      alert("Blog created successfully!");
 
-    // Clear form fields
-    setTitle("");
-    setContent("");
-    setImage(null);
-    setCategory("Technology");
+      // Clear form fields
+      setTitle("");
+      setContent("");
+      setImage(null);
+      setCategory("Technology");
 
-    // Redirect to blog page
-    navigate("/blog");
+      // Redirect to blog page
+      navigate("/blog");
+    } catch (error) {
+      console.error("Error adding blog: ", error);
+      alert("Failed to create blog!");
+    }
   };
 
   return (
@@ -86,19 +83,12 @@ function CreateBlog() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="image">Upload Image:</label>
-          <input type="file" id="image" accept="image/*" onChange={handleImageUpload} required />
-        </div>
-
-        {image && (
-          <div className="image-preview">
-            <img src={image} alt="Blog Preview" />
-          </div>
-        )}
-
-        <div className="form-group">
           <label htmlFor="category">Select Category:</label>
-          <select id="category" value={category} onChange={(e) => setCategory(e.target.value)}>
+          <select
+            id="category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
             <option value="Technology">Technology</option>
             <option value="Health">Health</option>
             <option value="Lifestyle">Lifestyle</option>
@@ -107,7 +97,6 @@ function CreateBlog() {
           </select>
         </div>
 
-        {/* ✅ Removed onClick to prevent double execution */}
         <button type="submit" className="submit-button">
           Publish Blog
         </button>
