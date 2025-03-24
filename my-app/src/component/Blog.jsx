@@ -2,23 +2,43 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import "../App.css"; // Ensure correct styles
+import "../App.css";
+import { getFirestore, collection, getDocs, addDoc   } from "firebase/firestore";
+import { app } from "../Config/Firebase";
+
+const db = getFirestore(app);         
 
 function Blog() {
   const [blogs, setBlogs] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
-    setBlogs(storedBlogs);
+    const fetchBlogs = async () => {
+      try {
+        const blogsCollection = collection(db, "Blogs");
+        const blogSnapshot = await getDocs(blogsCollection);
+        const blogList = blogSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        
+        setBlogs(blogList);
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+        // Optionally, set an error state to display an error message to the user
+      }
+    };
+
+    fetchBlogs();
   }, []);
 
   // ✅ Delete Blog Function
-  const handleDelete = (index) => {
+  const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this blog?")) {
-      const updatedBlogs = blogs.filter((_, i) => i !== index);
+      // Implement delete functionality here (e.g., using Firebase's deleteDoc)
+      // For now, just filter the blogs array
+      const updatedBlogs = blogs.filter((blog) => blog.id !== id);
       setBlogs(updatedBlogs);
-      localStorage.setItem("blogs", JSON.stringify(updatedBlogs));
     }
   };
 
@@ -26,6 +46,22 @@ function Blog() {
   const handleEdit = (index) => {
     navigate(`/editblog/${index}`); // Redirect to Edit Page
   };
+
+
+    const makesubCollection = async  () => {
+      await addDoc (collection(db, "Cities/Ramzan-1742299409416/Places"), {
+
+        Name:"Jeeto Pakistan",
+        des: "Kia HAi is Daby kay under",
+        Date: Date.now(),
+
+      });
+
+        console.log(makesubCollection);
+        
+
+    };
+
 
   return (
     <>
@@ -45,9 +81,11 @@ function Blog() {
           <p>No blogs available. Start writing one!</p>
         ) : (
           <div className="blog-grid">
-            {blogs.map((blog, index) => (
-              <div key={index} className="blog-card">
-                <img src={blog.image} alt="Blog Cover" className="blog-image" />
+            {blogs.map((blog) => (
+              <div key={blog.id} className="blog-card">
+                {blog.imageUrl && (
+                  <img src={blog.imageUrl} alt="Blog Cover" className="blog-image" />
+                )}
                 <h3>{blog.title}</h3>
                 <p>{blog.content.substring(0, 100)}...</p>
                 <span className="blog-category">{blog.category}</span>
@@ -55,8 +93,9 @@ function Blog() {
 
                 {/* Edit & Delete Buttons */}
                 <div className="blog-actions">
-                  <button className="edit-btn" onClick={() => handleEdit(index)}>Edit</button>
-                  <button className="delete-btn" onClick={() => handleDelete(index)}>Delete</button>
+                  <button className="edit-btn" onClick={() => handleEdit(blog.id)}>Edit</button>
+                  <button className="delete-btn" onClick={() => handleDelete(blog.id)}>Delete</button>
+                  <button onClick={makesubCollection}>Sub Data</button>
                 </div>
               </div>
             ))}

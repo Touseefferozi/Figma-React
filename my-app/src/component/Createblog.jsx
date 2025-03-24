@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
-import { getFirestore, doc, setDoc, collection } from "firebase/firestore";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { app } from "../Config/Firebase"; // Ensure correct path
 
 // Initialize Firestore
@@ -10,47 +10,47 @@ const db = getFirestore(app);
 function CreateBlog() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [image, setImage] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
   const [category, setCategory] = useState("Technology");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return; // Prevent double submission
 
     if (!title || !content) {
       alert("Title and content are required!");
       return;
     }
 
-    const id = `${title}-${Date.now()}`;
+    setIsSubmitting(true); // Disable further submissions
+    const id = `${title.replace(/\s+/g, "-").toLowerCase()}-${Date.now()}`;
 
-    // Create new blog object
     const newBlog = {
       id,
       title,
       content,
       category,
+      imageUrl,
       date: new Date().toLocaleDateString(),
     };
 
     try {
-      // Store in Firestore
-      const blogRef = doc(db, "Blogs", id);
-      await setDoc(blogRef, newBlog);
-
+      await setDoc(doc(db, "Blogs", id), newBlog);
       alert("Blog created successfully!");
 
-      // Clear form fields
       setTitle("");
       setContent("");
-      setImage(null);
+      setImageUrl("");
       setCategory("Technology");
 
-      // Redirect to blog page
       navigate("/blog");
     } catch (error) {
       console.error("Error adding blog: ", error);
       alert("Failed to create blog!");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -83,6 +83,23 @@ function CreateBlog() {
         </div>
 
         <div className="form-group">
+          <label htmlFor="imageUrl">Image URL:</label>
+          <input
+            type="text"
+            id="imageUrl"
+            placeholder="Enter image URL"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+          />
+        </div>
+
+        {imageUrl && (
+          <div className="form-group">
+            <img src={imageUrl} alt="Blog" style={{ maxWidth: "200px" }} />
+          </div>
+        )}
+
+        <div className="form-group">
           <label htmlFor="category">Select Category:</label>
           <select
             id="category"
@@ -97,8 +114,8 @@ function CreateBlog() {
           </select>
         </div>
 
-        <button type="submit" className="submit-button">
-          Publish Blog
+        <button type="submit" className="submit-button" disabled={isSubmitting}>
+          {isSubmitting ? "Publishing..." : "Publish Blog"}
         </button>
       </form>
     </div>

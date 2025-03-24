@@ -33,7 +33,7 @@ function Home() {
             ullam doloremque nemo. Libero?
           </p>
           <Link to="/Blog">
-            <button className="bg-white hover:bg-purple-600 text-black font-medium py-2 px-4 rounded mt-2">
+            <button className="bg-white rounded text-black font-medium hover:bg-purple-600 mt-2 px-4 py-2">
               Read More
             </button>
           </Link>
@@ -64,7 +64,7 @@ function Home() {
             to making AI accessible to everyone.
           </p>
           <Link to="/Blog">
-            <button className="bg-white hover:bg-purple-600 text-black font-medium py-2 px-4 rounded mt-2">
+            <button className="f-btn bg-white rounded text-black font-medium hover:bg-purple-600 mt-2 px-4 py-2">
               Read More
             </button>
           </Link>
@@ -73,11 +73,11 @@ function Home() {
 
       {/* Recent Post Section */}
       <div className="main-head">
-        <h2 className="text-2xl font-bold text-center my-4">Our Recent Post</h2>
+        <h2 className="text-2xl text-center font-bold my-4">Our Recent Post</h2>
       </div>
       <div className="flex justify-center mb-4">
         <Link to="/Blog">
-          <button className="bg-white hover:bg-purple-600 text-black font-medium py-2 px-4 rounded">
+          <button className="bg-white rounded text-black blog-btn font-medium hover:bg-purple-600 px-4 py-2">
             Read More
           </button>
         </Link>
@@ -101,14 +101,14 @@ function Home() {
           making AI accessible to everyone.
         </p>
         <Link to="/Blog">
-          <button className="bg-white hover:bg-purple-600 text-black font-medium py-2 px-4 rounded mt-2">
+          <button className="bg-white rounded text-black font-medium hover:bg-purple-600 mt-2 px-4 py-2">
             Read More
           </button>
         </Link>
       </div>
 
       {/* Card Container */}
-      <div className="card-container grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+      <div className="grid grid-cols-1 card-container p-4 gap-4 md:grid-cols-3">
         <Card
           username="8 Rules of Travelling In Sea You Need To Know"
           btntext="Click Me"
